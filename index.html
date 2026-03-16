@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack 算牌特訓高手</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="main-container">
+        <header>
+            <h1>Blackjack 算牌特訓高手</h1>
+            <p>目標：一副牌 20 秒內準確數完 (Hi-Lo 系統)</p>
+        </header>
+
+        <div class="game-area">
+            <canvas id="trainerCanvas"></canvas>
+            
+            <div id="resultOverlay" class="overlay hidden">
+                <div class="result-box">
+                    <h2>訓練結束</h2>
+                    <p id="timeResult"></p>
+                    <p id="deckResult"></p>
+                    <div class="count-input-area">
+                        <label for="userCount">你的計數是？</label>
+                        <input type="number" id="userCount" placeholder="0">
+                        <button onclick="checkCount()" id="checkBtn">檢查答案</button>
+                    </div>
+                    <p id="answerFeedback" class="hidden"></p>
+                    <button onclick="prepareNewSession()" class="restart-btn">再來一次</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-panel">
+            <div class="settings">
+                <div class="control-group">
+                    <label>牌副數:</label>
+                    <select id="deckCount">
+                        <option value="1">1 副牌</option>
+                        <option value="2">2 副牌</option>
+                        <option value="6" selected>6 副牌</option>
+                        <option value="8">8 副牌</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>每次出牌:</label>
+                    <select id="cardsPerDrop">
+                        <option value="1" selected>1 張</option>
+                        <option value="2">2 張 (進階)</option>
+                        <option value="3">3 張 (專業)</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>速度 (秒/張):</label>
+                    <input type="range" id="speedRange" min="0.1" max="1.5" step="0.05" value="0.5">
+                    <span id="speedValue">0.5</span>s
+                </div>
+            </div>
+            
+            <div class="buttons">
+                <button onclick="startTraining()" id="startBtn" class="primary-btn">開始特訓</button>
+                <button onclick="stopTraining()" id="stopBtn" class="danger-btn hidden">停止</button>
+            </div>
+            
+            <div class="live-stats">
+                <span>剩餘張數: <strong id="statsLeft">0</strong></span>
+                <span id="realCountLabel" class="hidden">真實計數: <strong id="statsCount">0</strong></span>
+            </div>
+        </div>
+        
+        <div class="helper-card">
+            <h3>Hi-Lo 參考</h3>
+            <div class="reference">
+                <span class="pos">+1</span> : 2, 3, 4, 5, 6
+                <span class="neu">0</span> : 7, 8, 9
+                <span class="neg">-1</span> : 10, J, Q, K, A
+            </div>
+        </div>
+    </div>
+
+    <script src="trainer.js"></script>
+</body>
+</html>
