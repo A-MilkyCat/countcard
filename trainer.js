@@ -15,7 +15,7 @@ canvas.width = 1600;
 canvas.height = 900;
 
 const imgPath = './img/PNG/'; 
-const backImgPath = './img/back.png'; 
+const backImgPath = './img/card_back.png'; 
 
 const suits = ['H', 'S', 'C', 'D'];
 const values = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
